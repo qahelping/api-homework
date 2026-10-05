@@ -7,7 +7,8 @@ class OpenBreweryDBService(BaseService):
         self.base_url = 'https://api.openbrewerydb.org/v1'
 
     def get_breweries(self, id):
-        return BreweryResponse(**self.get(f"{self.base_url}/breweries/{id}"))
+        response = self.get(f"{self.base_url}/breweries/{id}")
+        return BreweryResponse(**response)
 
     def get_country_breweries_meta_data(self, country):
         params = {'by_country': country}

@@ -10,10 +10,12 @@ class HttpClient2Gectaro:
         self.base_url = base_url
         self.project_id = project_id
 
-    def get_project_request_list(self):
+    def get_project_request_list(self, status_code):
         response = self.session.get(f'{self.base_url}/projects/{self.project_id}/resource-requests',
                                     headers=self.session.headers)
-        return response
+        assert response.status_code == status_code
+
+        return response.json()
 
     def post_resources(self, data: dict):
         response = self.session.post(

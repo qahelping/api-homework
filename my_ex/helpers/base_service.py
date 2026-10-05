@@ -49,3 +49,16 @@ class BaseService():
         except requests.exceptions.RequestException as e:
             logger.error("Error. %s", str(e))
             return None
+
+    def make_request(self, method, url, params=None, headers=None, code=None):
+        response = requests.request(method,url, params=params, headers=headers)
+        try:
+            if code is None:
+                response.raise_for_status()
+            else:
+                assert response.status_code == code
+            logger.info("OK. URL: %s, Code: %d", url, response.status_code)
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            logger.error("Error. %s", str(e))
+            return None

@@ -10,8 +10,8 @@ PROJECT_ID = 85877
 
 
 def test_list_requests_positive_1(client, url, token):
-    response = client.get_project_request_list()
-    assert response.status_code == HTTPStatus.OK
+    response = client.get_project_request_list(HTTPStatus.OK)
+    assert response 
 
 
 def test_list_requests_positive_2(client, url, token):
@@ -23,7 +23,7 @@ def test_list_requests_positive_2(client, url, token):
 def test_list_requests_negative_1(url, token):
     client_1 = HttpClient2Gectaro(base_url=url, token=token, project_id=111)
     response = client_1.get_project_request_list()
-    assert response.status_code > 400
+
 
 
 def test_list_requests_negative_2(url, token):

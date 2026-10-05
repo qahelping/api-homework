@@ -11,7 +11,7 @@ def distribute_books():
         users_with_books = list(
             map(
                 lambda user: {
-                    "name": user["name"],
+                    "name": user("name"),
                     "gender": user["gender"],
                     "address": user["address"],
                     "age": user["age"],
